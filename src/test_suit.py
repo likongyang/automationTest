@@ -5,9 +5,8 @@ from test_mathfunc import TestMathFunc
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestMathFunc))
 
-    tests = [TestMathFunc("test_add"), TestMathFunc("test_minus"), TestMathFunc("test_divide")]
-    suite.addTests(tests)
-
-    runner = unittest.TextTestRunner(verbosity=2)
-    runner.run(suite)
+    with open('UnittestTextReport.txt', 'a') as f:
+        runner = unittest.TextTestRunner(stream=f, verbosity=2)
+        runner.run(suite)
